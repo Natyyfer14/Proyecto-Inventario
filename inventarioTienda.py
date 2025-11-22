@@ -1,14 +1,14 @@
 import os
 inventario = []
 
-#funcion de limpiar pantalla 
+#funcion de limpiar pantalla para mejorar la visualizacion del menu
 def limpiar_pantalla():
-    if os.name == "nt":
-        os.system("cls")
+    if os.name == "nt": #opcion para windows
+        os.system("cls") #opcion para MacOs
     else:
         os.system("clear")
         #funcion para solicitar numero
-def  solicitar_numero(mensaje, tipo_dato):
+def  solicitar_numero(mensaje, tipo_dato): #Solicitar numero al usuario
     while True:
         try:
             valor = tipo_dato(input(mensaje))
@@ -18,25 +18,25 @@ def  solicitar_numero(mensaje, tipo_dato):
                 return valor
         except ValueError:
             print("Error: Por favor ingrese numero valido")
-def agregar_producto():
+def agregar_producto(): #permite agregar productos al inventario con nombre cantidad y precio
     print("\n-Agregar Producto-")
 
     nombre = input("Nombre del producto:").strip()
     if nombre == "":
         print("No puede estar vacio")
         return
-    cantidad = solicitar_numero("cantidad:",int)
+    cantidad = solicitar_numero("cantidad:",int) #solicita numeros enteros 
     precio = solicitar_numero("precio:",float)
-    producto = {"nombre": nombre, "cantidad": cantidad, "precio": precio}   
+    producto = {"nombre": nombre, "cantidad": cantidad, "precio": precio}   #crea el diccionario para los productos del inventario
 
-    inventario.append(producto)
+    inventario.append(producto) #Se añade el producto 
     print(f"{nombre} agregado exitosamente")
 def ver_inventario():
      print("\n-Inventario-")
      if not inventario:
         print("El inventario esta vacio")
      else:
-        print(f"{'Producto':<20} | {'Cantidad':<10} | {'Precio':<10}")
+        print(f"{'Producto':<20} | {'Cantidad':<10} | {'Precio':<10}") #muestra los encabezado de la tabla y alinear los datos en las columnas
         print("-" * 46)
         for prod in inventario:
             print(f"{prod['nombre']:<20} | {prod['cantidad']:<10} | ${prod['precio']:.2f}")
