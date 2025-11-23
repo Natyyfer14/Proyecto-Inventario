@@ -40,17 +40,26 @@ def ver_inventario():
         print("-" * 46)
         for prod in inventario:
             print(f"{prod['nombre']:<20} | {prod['cantidad']:<10} | ${prod['precio']:.2f}")
-def buscar_producto():
+def buscar_producto(): #busca los productos que estan en el inventario por nombre (sin destinguir mayusculas y minusculas)
         print("\n-Buscar Producto-")
         nombre_buscar = input("Ingrese el nombre del producto").strip()
         encontrado = False
         for prod in inventario:
-            if prod["nombre"].lower() == nombre_buscar.lower():
+            if prod["nombre"].lower() == nombre_buscar.lower(): #compara los nombres en minusculas para evitar errores
                 print(f"Producto: {prod['nombre']}, Cantidad: {prod['cantidad']}, Precio: ${prod['precio']:.2f}")
                 encontrado = True
-                break
+                break #termina de buscar una vez que encuentra el producto
             if not encontrado:
                 print("Producto no encontrado")
+def eliminar_producto(): #elimina el producto del inventatio segun el nombre ingresado por el usuario
+        print("\n-Eliminar Producto-")
+        nombre_eliminar = input("Ingrese el nombre del producto a eliminar:").strip()
+        for i, prod in enumerate(inventario): #compara los nombre en minusculas para evitar errores
+            if prod["nombre"].lower() == nombre_eliminar.lower(): #elimina el producto de la lista
+                del inventario[i]
+                print(f"{nombre_eliminar} eliminado exitosamente")
+                return 
+        print("Producto no encontrado")            
 def menu_principal():
         while True:
             print("\n-- Menu Inventario --")
