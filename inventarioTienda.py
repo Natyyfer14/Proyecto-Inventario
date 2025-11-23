@@ -66,8 +66,9 @@ def menu_principal():
             print("1. Agregar Producto")
             print("2. Ver inventario")
             print("3. Buscar producto")
-            print("4. Salir")
-            opcion = input("Seleccione una opcion (1-4):").strip()
+            print("4. Eliminar producto)
+            print("5. Salir")
+            opcion = input("Seleccione una opcion (1-5):").strip() #la funcion solicita la opcion del usuario
             if opcion == "1":
                 agregar_producto()
             elif opcion == "2":
@@ -75,11 +76,13 @@ def menu_principal():
             elif opcion == "3":
                 buscar_producto()
             elif opcion == "4":
+                eliminar_producto()
+            elif opcion == "5":
                 print("Salir")
                 break
             else:
                 print("Por favor intente de nuevo")
-            if opcion in ["1","2","3"]:
+            if opcion in ["1","2","3"]: #se pausa la ejecucion para que el usuario vea el resultado
                 input("Presione Enter para volver")
-if __name__ == "__main__":
+if __name__ == "__main__": #Entrada principal del programa
         menu_principal()
